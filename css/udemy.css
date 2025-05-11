@@ -1,43 +1,40 @@
-/* Certificate Designing */
+/* src/styles/UdemyCertificate.css */
+/* Content from your original Certificate-Generator/css/udemy.css */
 
-* {
-  margin: 0;
-  padding: 0;
+#certificate {
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 1280px;
+  background-color: #f8f9fb;
+  box-sizing: border-box;
+  margin: 20px auto;
+  /* box-shadow: 0 0 15px rgba(0,0,0,0.1); */ /* REMOVED SHADOW */
+  border: 1px solid #e0e0e0; /* Added a light border instead of shadow */
+  transform-origin: top center;
+}
+
+.udemy-container-active {
+  background-color: white !important;
+  align-items: flex-start !important;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 #course-name {
   font-family: " Arno Pro Display ", "Times New Roman", Times, serif;
-  /* src: url("../font/ArnoPro-BoldDisplay.otf"); */
   font-weight: bold;
   font-size: 80px;
   margin-top: 12px;
   color: rgb(28, 28, 28);
 }
 
-#certificate {
-  display: none;
-  flex-direction: column;
-  padding: 60px;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  height: fit-content;
-  width: 1280px;
-  /* background-color: rgba(200, 194, 194, 0.073); */
-}
-
-.container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #dbdbdbc3;
-}
-
 .logo {
   display: flex;
   align-items: center;
-  width: auto;
+  width: 100%;
 }
 
 .right-side {
@@ -45,50 +42,57 @@
   font-family: "DistrictProW01-Medium", sans-serif;
   color: rgba(107, 107, 107, 0.879);
   text-align: right;
-  padding-left: 620px;
+  margin-left: auto;
 }
 .right-side > div {
   margin-top: 10px;
 }
 #udemy-logo {
   height: 120px;
+  max-width: 200px;
+  object-fit: contain;
 }
 
 .content {
   font-family: "Montserrat", sans-serif;
-  font-weight: bolder;
+  font-weight: bolder; /* This was 'bolder', ensure it's what you want or use a numeric value */
   margin-top: 70px;
-}
-
-.content > h4,
-.user > h4 {
-  font-family: "DistrictProW01-Medium", sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  margin-top: 18px;
 }
 
 .content > h3 {
   color: rgba(100, 100, 100, 0.899);
   letter-spacing: 1.5px;
+  font-size: 1.1em;
+  font-weight: normal; /* Added to ensure it's not inheriting boldness */
 }
 
-.content > h1 {
+.content > h1 { /* This is for #course-name effectively */
   margin: 0;
 }
+
+.content > h4,
+.user > h4 {
+  font-family: "DistrictProW01-Medium", sans-serif;
+  font-weight: 400; /* Explicitly set */
+  font-size: 20px;
+  margin-top: 18px;
+  color: rgb(50,50,50);
+}
+
 
 .content > h4 > b,
 .user > h4 > b {
   font-family: "Poppins", sans-serif;
   color: rgb(28, 28, 28);
-  font-size: 20px;
+  font-size: 20px; /* Ensure this matches parent h4 or adjust */
+  font-weight: 700; /* Explicitly bold */
 }
 
-.user > h1 {
+.user > h1 { /* This targets #name */
   font-size: 42px;
   font-family: "Poppins", sans-serif;
   color: rgb(28, 28, 28);
-  font-weight: bolder;
+  font-weight: 700; /* Explicitly bold */
 }
 
 .user {
@@ -99,17 +103,36 @@
   margin: 0;
 }
 
-#download {
-  margin-top: 20px;
-  display: none;
+
+/* Form Element Styles from original form (if form is kept as fallback) */
+#form {
+  padding: 50px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.16) 0px 30px 60px -30px; */ /* REMOVED SHADOW */
+  border: 1px solid #ddd; /* Added a light border */
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: white;
+  color: #333; /* Ensure form text is visible */
+}
+#form label, #form h2 {
+    color: #333; /* Ensure form labels are visible */
+}
+#form input, #form textarea {
+    color: #333; /* Ensure form input text is visible */
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    width: calc(100% - 16px); /* Account for padding */
+    margin-top: 5px;
+}
+#form textarea {
+    resize: vertical;
 }
 
-.btn {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-}
 
+/* Button Styles */
 #Generate,
 #download {
   cursor: pointer;
@@ -117,81 +140,167 @@
   border: none;
   border-radius: 6px;
   font-family: "Montserrat", sans-serif;
-  width: 250px;
-  background-color: rgba(0, 0, 255, 0.496);
+  width: 250px; /* Consider making this responsive or a max-width */
   height: 50px;
   transition: all 0.3s;
+  display: inline-flex; /* For icon alignment */
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* Optional subtle shadow if desired, or none */
+  margin: 10px; /* Add some margin around buttons */
 }
 
-#Generate:hover,
+#Generate {
+  background-color: #4A90E2; /* Blue */
+}
+#Generate:hover {
+  background-color: #357ABD;
+}
+
+#download {
+  background-color: #50C878; /* Green */
+}
 #download:hover {
-  background-color: rgba(0, 0, 255, 0.694);
+  background-color: #3EAF5F;
 }
 
+
+/* Alert styles from original - keep if alerts are used, ensure colors are contrasting */
 .alert > strong {
-  color: red;
+  color: red; /* Ensure this is visible against its background */
   background-color: transparent;
 }
 .alert-warning {
   --bs-alert-color: #664d03;
-  --bs-alert-bg: #fff3cdb5;
-  --bs-alert-border-color: #ffecb500;
+  --bs-alert-bg: #fff3cdb5; /* Semi-transparent, ensure text contrast */
+  --bs-alert-border-color: transparent; /* Original was #ffecb500 */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ffeeba; /* Add a visible border */
 }
 
-/* Media Queries */
+
+/* Font Imports */
+@font-face {
+  font-family: 'DistrictProW01-Medium';
+  src: url('//db.onlinewebfonts.com/c/7db56b18988b0db9d84b3bfd3d4f9b6b?family=DistrictProW01-Medium') format('woff2'),
+       url('//db.onlinewebfonts.com/c/7db56b18988b0db9d84b3bfd3d4f9b6b?family=DistrictProW01-Medium') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Arno Pro Display';
+  src: url('//db.onlinewebfonts.com/c/ceae0b0ba6ed654c11bebaa577938012?family=Arno+Pro+Display') format('woff2'),
+       url('//db.onlinewebfonts.com/c/ceae0b0ba6ed654c11bebaa577938012?family=Arno+Pro+Display') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Media Queries (from original udemy.css) - adjust as needed */
+@media (max-width: 1300px) {
+  #certificate {
+    width: 90%;
+    padding: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    transform: scale(0.8);
+    margin: 10px auto;
+  }
+  .udemy-container-active {
+    align-items: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #certificate {
+    transform: scale(0.65);
+  }
+   #udemy-logo {
+      height: 90px;
+    }
+    #course-name {
+        font-size: 60px;
+    }
+    .content > h4, .user > h4 {
+        font-size: 16px;
+    }
+    .user > h1 { /* This is #name */
+        font-size: 32px;
+    }
+    .right-side {
+        font-size: 12px;
+    }
+}
+
 
 @media (max-width: 500px) {
+  #certificate {
+    transform: scale(0.45);
+    margin-top: -100px;
+    margin-bottom: -100px;
+  }
+  /* Form specific adjustments - if form is kept as fallback */
   #form {
     font-size: 14px;
     padding: 22px;
+    width: 90%; /* Make form take more width on mobile */
+    box-sizing: border-box;
   }
-  input {
-    font-size: 12px;
+  #form input, #form textarea {
+    font-size: 14px; /* Adjust input font size for mobile */
+    width: 100%; /* Ensure inputs take full width of their container */
   }
-  #download {
-    font-size: 40px;
-    height: 165px;
+
+  #Generate, #download {
+    width: 80%; /* Make buttons wider on mobile */
+    height: 45px;
+    font-size: 16px;
   }
 }
 
-/* Here Comes the form's designing */
-
-#form {
-  padding: 50px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.16) 0px 30px 60px -30px;
-  font-family: "Montserrat", sans-serif;
-  border-radius: 10px;
-  font-size: 20px;
+/* Error message styling in the .container */
+.udemy-error-container {
   background-color: white;
+  padding: 30px 20px; /* Adjusted padding */
+  border-radius: 10px;
+  text-align: center;
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */ /* REMOVED SHADOW */
+  border: 1px solid #f5c6cb; /* Light red border for error */
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 600px; /* Limit width */
+  margin: 20px;
 }
-
-.first-name,
-.last-name,
-.date,
-.length,
-.course,
-.teacher {
-  margin-top: 30px;
+.udemy-error-container h1 {
+  color: #721c24; /* Darker red for heading */
+  margin-bottom: 15px;
+  font-size: 1.5em;
 }
-
-#course {
-  margin-top: 15px;
-  font-size: 20px;
-  font-family: sans-serif;
-  padding: 10px;
-  border: 1px solid rgba(128, 128, 128, 0.563);
-  outline: none;
+.udemy-error-container p {
+  color: #721c24; /* Darker red for text */
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
-
-label {
-  margin-top: 25px;
+.udemy-error-container ul {
+  list-style-position: inside;
+  text-align: left;
+  display: inline-block; /* Center the list block */
+  margin-bottom: 20px;
 }
-
-input {
-  background-color: transparent;
-  border: none;
-  font-size: 18px;
-  width: 300px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.563);
+.udemy-error-container li {
+  color: #721c24;
+}
+.error-back-link { /* Style for the "Go Back" link */
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white !important; /* Ensure white text */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.error-back-link:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
